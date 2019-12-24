@@ -16,6 +16,9 @@ import aiohttp
 
 
 def download(ways):
+    print(ways)
+    print(not ways)
+
     if not ways:
         print('Ways list is empty. Downloading is impossible')
         return
@@ -48,6 +51,7 @@ def download(ways):
 
 
 async def async_downloader(ways, loop, success_files=set(), failure_files=set()):
+    """异步下载"""
     async with aiohttp.ClientSession() as session:
         coroutines = [
             download_file_by_url(
@@ -111,7 +115,8 @@ async def download_file_by_url(url, session=None):
 
 
 def test():
-    ways = ['https://www.wikipedia.org',
+    ways = ['https://pm.myapp.com/invc/xfspeed/qqpcmgr/module_update/Lemon_3.1.0.dmg',
+            'https://www.wikipedia.org',
             'https://www.ya.ru',
             'https://www.duckduckgo.com',
             'https://www.fail-path.unknown',

@@ -1649,10 +1649,13 @@ def resetInterpreter():
 # main program
 def main():
     """
+        从命令行读取文本文件并解释它们。
         reads textfiles from the command-line and interprets them. 
     """
 
     # [1:] because the first argument is the program itself.
+    #print(sys.argv)
+    print(sys.argv[1:])
     for arg in sys.argv[1:]:
 
         resetInterpreter()  # resets interpreter mind
@@ -1670,4 +1673,5 @@ def main():
 
 
 if __name__ == "__main__":
+    print("main 方法")
     main()
