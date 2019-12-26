@@ -59,6 +59,9 @@ async def async_downloader(ways, loop, success_files=set(), failure_files=set())
                 session=session,
             ) for url in ways]
 
+        print("coroutines:"),
+        print(coroutines)
+
         completed, pending = await asyncio.wait(coroutines, return_when=cofu.FIRST_COMPLETED)
         while pending:
 
@@ -115,15 +118,23 @@ async def download_file_by_url(url, session=None):
 
 
 def test():
+
+    """测试异步下载功能"""
+
     ways = ['https://pm.myapp.com/invc/xfspeed/qqpcmgr/module_update/Lemon_3.1.0.dmg',
-            'https://www.wikipedia.org',
-            'https://www.ya.ru',
-            'https://www.duckduckgo.com',
-            'https://www.fail-path.unknown',
+            #'https://www.wikipedia.org',
+            #'https://www.ya.ru',
+            #'https://www.duckduckgo.com',
+            #'https://www.fail-path.unknown',
             ]
 
     download(ways)
 
+# if __name__ == "__main__":
+#
+#      #main方法: 调用test()方法
+#
+#     test()
 
 if __name__ == "__main__":
     test()
